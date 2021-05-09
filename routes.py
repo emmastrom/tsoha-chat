@@ -80,8 +80,6 @@ def send():
     chain_id = request.form["chain_id"]
     messages.send(content, chain_id)
     return redirect("/chain/"+chain_id)
-   # else:
-       # return render_template("error.html", message="Viestin lähetys ei onnistunut")
 
 @app.route("/login", methods=["get","post"])
 def login():
