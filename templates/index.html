@@ -30,7 +30,7 @@ Viestien määrä: {{ tuple[1] }}
 <hr>
 {% endfor %}
 <p>
-{% if session.user_role > 0 %}
+{% if session.user_role == 1 or session.user_role == 2 %}
 <h3>Muokkaa ketjuja</h3>
 <ul>
 <a href="/edit">Muuta ketjun nimeä</a>
