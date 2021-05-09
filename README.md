@@ -9,3 +9,5 @@ Sovelluksen ominaisuuksia:
 -  Käyttäjä voi kirjoittaa uuden viestin olemassa olevaan ketjuun.
 -  Käyttäjä voi muokata luomansa ketjun otsikkoa sekä lähettämänsä viestin sisältöä. Käyttäjä voi myös poistaa ketjun tai viestin.
 -  Ylläpitäjä voi lisätä ja poistaa keskustelualueita.
+
+Toimii [Herokussa](https://pacific-retreat-24717.herokuapp.com/).
