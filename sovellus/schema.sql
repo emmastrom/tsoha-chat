@@ -21,7 +21,7 @@ CREATE TABLE chains (
 );
 
 CREATE TABLE messages (
-    id SERIAL PRIAMRY KEY,
+    id SERIAL PRIMARY KEY,
     content TEXT,
     user_id INTEGER REFERENCES users,
     sent_at TIMESTAMP,
