@@ -1,0 +1,16 @@
+<h2>Muokkaa ketjujen aiheita</h2>
+
+<form action="/edit" method="POST">
+
+<p>Minkä ketjun nimeä haluat muuttaa?</p>
+{% for chain in list %}
+
+<input type="radio" name="chain" value="{{ chain.id }}"> {{ chain.subject }} <br>
+
+{% endfor %}
+
+<p>
+
+<input type="text" name="subject"> Uusi aihe <br>
+<input type="submit" value="Vaihda aihe">
+</form>

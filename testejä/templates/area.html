@@ -1,0 +1,22 @@
+{{ name }}
+<hr>
+{% for chain in chains %}
+Aihe: {{ chain[1] }} <br>
+<p>
+Aloitusviesti: {{ chain[2] }} <br>
+<p>
+<a href="/chain/{{ chain[0] }}">Avaa ketju</a> <br>
+<hr>
+{% endfor %}
+<p>
+Uusi ketju:
+<form action="/create" method="POST">
+<p>Nimi:<br>
+<input type="text" name="subject"><p/>
+<p>Avausviesti:<br>
+<input type="text" name="opening_message"></p>
+<input type="hidden" name="area_id" value="{{ id }}">
+<input type="submit" value="Luo ketju">
+</form>
+<p>
+<a href="/">Palaa Takaisin</a>
