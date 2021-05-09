@@ -37,7 +37,9 @@ Viestien määrä alueella: {{ tuple[1] }}
 {% if session.user_role == 1 or session.user_role == 2 %}
 <h3>Muokkaa ketjuja</h3>
 <ul>
-<a href="/edit">Muuta ketjun nimeä</a>
+<a href="/edit_subject">Muuta ketjun nimeä</a>
+<p>
+<a href="/edit_opening_message">Muuta ketjun aloitusviestiä</a>
 {% endif %}
 {% if session.user_role == 2 %}
 <h3>Ylläpitäjän toiminnot</h3>

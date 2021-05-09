@@ -46,17 +46,30 @@ def remove_area():
             areas.remove_area(area_id, users.user_id())
         return redirect("/")
 
-@app.route("/edit", methods=["GET", "POST"])
+@app.route("/edit_subject", methods=["GET", "POST"])
 def edit_subject():
     if request.method == "GET":
         list = chains.get_my_chains(users.user_id())
-        return render_template("edit.html", list=list)
+        return render_template("edit_subject.html", list=list)
 
     if request.method == "POST":
-        if chain in request.form:
+        if "chain" in request.form:
             chain_id = request.form["chain"]
             subject = request.form["subject"]
-            chains.edit_subject(chain_id, subject, users.user_id())
+            chains.edit_subject(chain_id, subject)
+        return redirect("/")
+
+@app.route("/edit_opening_message", methods=["GET", "POST"])
+def edit_opening_message():
+    if request.method == "GET":
+        list = chains.get_my_chains(users.user_id())
+        return render_template("edit_opening_message.html", list=list)
+
+    if request.method == "POST":
+        if "chain" in request.form:
+            chain_id = request.form["chain"]
+            opening_message = request.form["opening_message"]
+            chains.edit_opening_message(chain_id, opening_message)
         return redirect("/")
 
 @app.route("/chain/<int:id>")

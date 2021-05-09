@@ -37,7 +37,12 @@ def get_opening_message(id):
     result = db.session.execute(sql, {"id":id})
     return result.fetchone()[0]
 
-def edit_subject(id, subject, user_id):
-    sql = "UPDATE chains SET subject=:subject WHERE id=:id AND user_id=:user_id"
-    db.session.execute(sql, {"id":id, "subject":subject, "user_id":user_id})
+def edit_subject(id, subject):
+    sql = "UPDATE chains SET subject=:subject WHERE id=:id"
+    db.session.execute(sql, {"id":id, "subject":subject})
+    db.session.commit()
+
+def edit_opening_message(id, opening_message):
+    sql = "UPDATE chains SET opening_message=:opening_message WHERE id=:id"
+    db.session.execute(sql, {"id":id, "opening_message":opening_message})
     db.session.commit()

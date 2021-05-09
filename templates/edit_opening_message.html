@@ -1,0 +1,17 @@
+<h2>Muokkaa ketjujen aloitusviestejä</h2>
+
+<form action="/edit_opening_message" method="POST">
+
+<p>Mitä aloitusviestiä haluat muuttaa?</p>
+{% for chain in list %}
+
+<input type="radio" name="chain" value="{{ chain.id }}"> {{ chain.opening_message }} <br>
+
+{% endfor %}
+
+<p>
+
+<input type="text" name="opening_message"> Muokkaa aloitusviestiä <br>
+<p>
+<input type="submit" value="Muokkaa">
+</form>
