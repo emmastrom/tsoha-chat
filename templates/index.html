@@ -1,0 +1,44 @@
+{% if session.user_id %}
+Olet kirjautunut sisään nimellä <b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a>
+{% else %}
+Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+{% endif %}
+
+<p>
+Alueiden määrä: {{ count }}
+<hr>
+{% for area in areas %}
+<i>Alue:</i> {{ area[1] }}
+<p>
+{% for chain in chains %}
+{% for tuple in chain %}
+{% if tuple[0] == area[0] %}
+Ketjujen määrä: {{ tuple[1] }}
+|
+{% for message in messages %}
+{% for tuple in message %}
+{% if tuple[0] == area[0] %}
+Viestien määrä: {{ tuple[1] }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+<p>
+<li> <a href="/area/{{ area[0] }}">Mene alueelle</a>
+<hr>
+{% endfor %}
+<p>
+{% if session.user_role != 0 %}
+<h3>Muokkaa ketjuja</h3>
+<li> <a href="/edit">Muuta ketjun nimeä</a>
+{% endif %}
+{% if session.user_role == 2 %}
+<h3>Ylläpitäjän toiminnot</h3>
+<ul>
+<li> <a href="/add">Tee uusi keskustelualue</a>
+<li> <a href="/remove">Poista keskustelualue</a>
+<li> <a href="/secret">Luo salainen keskustelualue</a>
+<hr>
+{% endif %}
