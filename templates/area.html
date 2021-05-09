@@ -1,7 +1,8 @@
-{{ name }}
+<h1>{{ name }}</h1>
 <hr>
 {% for chain in chains %}
-Aihe: {{ chain[1] }} <br>
+<p>
+<h2>Aihe: {{ chain[1] }}</h2>
 <p>
 Aloitusviesti: {{ chain[2] }} <br>
 <p>
@@ -9,6 +10,7 @@ Aloitusviesti: {{ chain[2] }} <br>
 <hr>
 {% endfor %}
 <p>
+{% if session.user_id %}
 Uusi ketju:
 <form action="/create" method="POST">
 <p>Nimi:<br>
@@ -17,6 +19,12 @@ Uusi ketju:
 <textarea name="opening_message" rows="3" cols="40"></textarea>
 <input type="hidden" name="area_id" value="{{ id }}">
 <input type="submit" value="Luo ketju">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 <p>
-<a href="/">Palaa Etusivulle</a>
+<hr>Olet kirjautunut sisään. | <a href="/">Palaa etusivulle</a> |
+<a href="/logout">Kirjaudu ulos</a>
+{% else %}
+<a href="/login">Kirjaudu sisään</a>
+{% endif %}
+

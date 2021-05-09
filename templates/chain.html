@@ -1,19 +1,13 @@
-Aihe: {{ subject }}
-<hr>
+<h2>Aihe: {{ subject }}</h2>
+<p>
+<p>Aloitusviesti: {{ opening_message }}
+<p>
 Viestien määrä: {{ count }}
-{% for chain in chains %}
-<b>Otsikko:</b> {{ chain[1] }}
-<p>
-<b>Aloitusviesti:</b> {{ chain[2] }}
-<p>
-<b>Lähettäjä:</b> {{ chain[3] }}
-<hr>
-{% endfor %}
 <hr>
 {% for message in messages %}
-<br>{{ message[1] }}:
 <br>{{ message[0] }}
-<br>Lähetetty: {{ message[2] }}
+<br>
+<br>Lähettäjä: {{ message[1] }} | Lähetetty: {{ message[2] }}
 <hr>
 {% endfor %}
 {% if session.user_id %}
@@ -22,10 +16,13 @@ Viestien määrä: {{ count }}
 <textarea name="content" rows="3" cols="40"></textarea>
 <input type="hidden" name="chain_id" value="{{ id }}">
 <input type="submit" value="Lähetä">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+</form>
 <a href="/">Palaa etusivulle</a>
 <p>
-Olet kirjautunut sisään.
+<hr>Olet kirjautunut sisään. | <a href="/">Palaa etusivulle</a> |
 <a href="/logout">Kirjaudu ulos</a>
 {% else %}
 <a href="/login">Kirjaudu sisään</a>
 {% endif %}
+

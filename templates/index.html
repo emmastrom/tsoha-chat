@@ -1,27 +1,28 @@
-<h4>Chat <3<h4>
+<h1>Chat <3</h1>
 <p>
-<hr>
 {% if session.user_id %}
 Olet kirjautunut sisään nimellä <b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a>
 {% else %}
 Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+<hr>
 {% endif %}
 
 <p>
 Alueiden määrä: {{ count }}
 <hr>
 {% for area in areas %}
-<i>Alue:</i> {{ area[1] }}
+<h4>{{ area[1] }} </h4>
 <p>
 {% for chain in chains %}
 {% for tuple in chain %}
 {% if tuple[0] == area[0] %}
-Ketjujen määrä: {{ tuple[1] }}
+<p>
+Ketjujen määrä alueella: {{ tuple[1] }}
 |
 {% for message in messages %}
 {% for tuple in message %}
 {% if tuple[0] == area[0] %}
-Viestien määrä: {{ tuple[1] }}
+Viestien määrä alueella: {{ tuple[1] }}
 {% endif %}
 {% endfor %}
 {% endfor %}
