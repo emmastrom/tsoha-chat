@@ -26,19 +26,22 @@ Viestien määrä: {{ tuple[1] }}
 {% endfor %}
 {% endfor %}
 <p>
-<li> <a href="/area/{{ area[0] }}">Mene alueelle</a>
+<a href="/area/{{ area[0] }}">Mene alueelle</a>
 <hr>
 {% endfor %}
 <p>
-{% if session.user_role != 0 %}
+{% if session.user_role > 0 %}
 <h3>Muokkaa ketjuja</h3>
-<li> <a href="/edit">Muuta ketjun nimeä</a>
+<ul>
+<a href="/edit">Muuta ketjun nimeä</a>
 {% endif %}
 {% if session.user_role == 2 %}
 <h3>Ylläpitäjän toiminnot</h3>
 <ul>
 <li> <a href="/add">Tee uusi keskustelualue</a>
+<p>
 <li> <a href="/remove">Poista keskustelualue</a>
+<p>
 <li> <a href="/secret">Luo salainen keskustelualue</a>
 <hr>
 {% endif %}

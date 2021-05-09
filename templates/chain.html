@@ -19,13 +19,13 @@ Viestien määrä: {{ count }}
 {% if session.user_id %}
 <form action="/send" method="POST">
 <p>Viesti:<br>
-<input type="text" name="content"></p>
+<textarea name="content" rows="3" cols="40"></textarea>
 <input type="hidden" name="chain_id" value="{{ id }}">
 <input type="submit" value="Lähetä">
 <a href="/">Palaa etusivulle</a>
 <p>
 Olet kirjautunut sisään.
-<a href="/create">Luo ketju</a> | <a href="/logout">Kirjaudu ulos</a>
+<a href="/logout">Kirjaudu ulos</a>
 {% else %}
 <a href="/login">Kirjaudu sisään</a>
 {% endif %}
